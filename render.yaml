@@ -1,0 +1,25 @@
+
+
+
+
+
+databases:
+  - name: test-db
+    databaseName: test-db
+    user: test-db
+
+services:
+  - type: web
+    name: test-db
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn mysite.wsgi:application"
+    envVars:
+      - key: Dpostgres://test_db_jv0q_user:JN4GSknnZhQvmBTtNXnjN9CcNxEBSf2L@dpg-cl4rrpvrfvgs73dm7tsg-a.oregon-postgres.render.com/test_db_jv0q
+        fromDatabase:
+          name: test-db
+          property: connectionString
+      - key: 1^_&3^e5&d&^1r)7q21ku7kif0czi07fiw_1^&ref^k!y#_h-d
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
